@@ -1,6 +1,36 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$navbar-default-bg: #022b3f;
+
 
 @import "bootstrap-sprockets";
 @import "bootstrap"; 
+
+#logo {
+    float: left;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+    background-color: #3e271d;
+}
+
+#logo:hover {
+    
+    color: #fff;
+    text-decoration: none;
+    
+}
+
+#edit {
+    margin-top: 12px;
+    margin-left: 5px;
+    color: #D3D3D3;
+    
+}
+
+#links {
+    display: inline;
+}
