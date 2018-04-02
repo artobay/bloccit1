@@ -46,6 +46,7 @@ source 'https://rubygems.org'
    gem 'rails-controller-testing'
    gem 'shoulda'
   gem "factory_bot_rails"
+  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 
  end
 
