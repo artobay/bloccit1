@@ -30,7 +30,8 @@ def create
      description: "BigMoney Membership - #{current_user.email}",
      currency: 'usd'
    )
- 
+   
+   current_user.premium!
    flash[:notice] = "Thanks for all the money, #{current_user.email}! Feel free to pay me again."
    redirect_to wikis_path
  
