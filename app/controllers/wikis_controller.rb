@@ -17,7 +17,7 @@ class WikisController < ApplicationController
       @wiki = Wiki.create(wiki_params)
       @wiki.title = params[:wiki][:title]
       @wiki.body = params[:wiki][:body]
-
+      @wiki.private = false
       @wiki.user = current_user
       
       authorize @wiki
