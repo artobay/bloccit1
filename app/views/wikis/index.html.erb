@@ -1,14 +1,18 @@
 <div class="container">
 <h1>Showing all the Wikis is really cool!</h1>
-
-
  <h3><%= link_to "New Wiki", new_wiki_path, class: "btn btn-success" %></h3>
-
+<% user = current_user %>
 <% @wikis.each do |wiki| %>
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
+        <% if (user.role == 'admin' || user.role == 'premium') %>
         <p><%= link_to wiki.title, wiki_path(wiki.id) %></p>
+          <% elsif user.role == 'standard' && wiki.private == true %>
+           <p> Sorry! This wiki is private. </p>
+            <% elsif user.role == 'standard' && wiki.private == false %>
+            <p><%= link_to wiki.title, wiki_path(wiki.id) %></p>
+      <% end %>
       </h4>
     </div>
   </div>
