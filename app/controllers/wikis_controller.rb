@@ -17,7 +17,7 @@ class WikisController < ApplicationController
       @wiki = Wiki.create(wiki_params)
       @wiki.title = params[:wiki][:title]
       @wiki.body = params[:wiki][:body]
-      @wiki.private = false
+      @wiki.private = params[:wiki][:private]
       @wiki.user = current_user
       
       authorize @wiki
@@ -41,6 +41,7 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     authorize @wiki
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -66,6 +67,6 @@ class WikisController < ApplicationController
 
   private
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :user)
+    params.require(:wiki).permit(:title, :body, :private)
   end
 end
