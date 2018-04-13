@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
 
   def index
-      @wikis = Wiki.all
+      @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -35,8 +35,12 @@ class WikisController < ApplicationController
   def update
     @wiki = Wiki.create(wiki_params)
     @wiki.user = current_user
+    emails = params[:collaborators].split(',').map(&:strip)
+    @wiki.users = User.where(email: emails)
+   
+   
     authorize @wiki
-
+    
 
     if @wiki.save
       flash[:notice] = "Wiki was updated."
@@ -64,4 +68,6 @@ class WikisController < ApplicationController
   def wiki_params
     params.require(:wiki).permit(:title, :body, :private)
   end
+  
+  
 end

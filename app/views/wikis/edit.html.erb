@@ -20,6 +20,13 @@
         <%= w.label :body %>
         <%= w.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
       </div>
+     
+      <div class= "form-group">
+        <%= w.label :collaborators%>
+        <br>
+      <%= text_field_tag :collaborators, @wiki.users.map(&:email).join(', ') , placeholder: "Collaborator Email" %>
+       </div>
+      
       <div class="form-group">
         <%= w.submit "Save", class: 'btn btn-success' %>
       </div>
